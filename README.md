@@ -116,10 +116,17 @@ amount will not cause the `payer` to have less than zero `points`. Then, the neg
 >![Example '/balance' output](/assets/images/postman-4.png)
 
 ## Running Tests
-Run tests in [test.js](test/test.js) from the project's main directory:
-```
-npm test
-```
+Run tests in [test.js](tests/test.js) from the project's main directory:
+1) Install dependencies
+    ```
+    npm install --save-dev jest
+    npm install supertest --save-dev
+    ```
+2) Run tests
+    ```
+    npm test
+    ```
+
 Tests check that the app should:
 * `POST` a new transaction
 * NOT `POST` a new transaction with incorrect request body

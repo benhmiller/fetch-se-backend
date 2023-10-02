@@ -1,11 +1,85 @@
 1. Why did you choose the tools, libraries, and language you used for the coding exercise?
+    For this coding exercise, I opted for a set of tools and libraries that I believe work well together 
+    to build a robust and efficient API. Express.js, a popular Node.js web application framework, was chosen 
+    for its flexibility and features in creating APIs and web servers. Its middleware system and ease of 
+    extension were appealing aspects. 
 
+    Jest, a widely used testing framework, and Supertest, an HTTP assertion library, were chosen for efficient
+    and comprehensive testing.
 
+    Node.js, the runtime environment, was selected for its capability to execute JavaScript on the server-side,
+    making it a suitable choice for building server applications. 
+
+    npm, as the package manager, facilitated easy dependency management and installation.
 
 2. What are the advantages and disadvantages of your solution?
 
+    Advantages:
+        Discussing first the advantages of the provided solution, it excels in the following areas:
+        1. Efficient Transaction Management: The use of a custom linked list for managing transactions
+        ensures efficient insertion and removal, particularly for maintaining the order based on
+        timestamps. This allows for optimal handling of transactions, supporting the spending and
+        addition of points.
 
+        2. Point Tracking by Payer: The implementation effectively tracks points per payer in a dictionary
+        (points_per_payer), making it easy to retrieve and update the points associated with each payer.
+        This facilitates efficient balance tracking for each payer.
+        
+        3. Clear Error Handling and Feedback: Error handling within the route handlers is thorough and
+        provides clear feedback to the client in case of invalid requests or erroneous actions. This ensures
+        a good user experience and aids in debugging and troubleshooting.
+
+        4. Express.js Integration and Middleware Usage: Leveraging Express.js for handling routes and using
+        appropriate middleware like body-parser enhances the application's capability to handle HTTP requests
+        effectively. This integration follows industry-standard practices.
+        
+        5. Scalability and Potential for Future Enhancements: The modular and organized design allows for
+        easy expansion and potential enhancements. It provides a strong foundation that can accommodate additional
+        features or increased complexity as the application evolves.
+
+    Disadvantages:
+        Of course, while the solution succeeds in providing the desired functionality, the disadvantages must be
+        acknowledged:
+        1. Error Handling: Managing the complexity of error handling——specifically in scenarios involving
+        negative payer points——could pose a challenge for code maintainability.
+        
+        2 Synchronous Processing: The synchronous processing of requests could prove a severe hindrance on performance in I/O-bound
+        operations, prompting consideration for asynchronous processing. 
+        
+        3. Scalability: The current design is optimized for single-user applications based on the project's specifications, and may
+        not be well-suited for scenarios involving multiple concurrent users or high scalability requirements——the
+        architecture and data handling might encounter performance issues and resource limitations when dealing with a
+        large number of users or a high volume of transactions.
+
+        4. Security: The current application lacks crucial security measures such as input validation, authentication, and
+        authorization. For a production environment, it is imperative to integrate these security features to enhance
+        the application's resilience against potential vulnerabilities and malicious attacks.
 
 3. What has been a favorite school/personal project thus far? What about it that challenged you?
 
+One of my favorite personal projects to date has been the creation of my own portfolio website. This project has been significant
+as it allows me to showcase my skills, experiences, and interests in one centralized platform. The website serves as a
+representation of my capabilities, acting as a digital resume for potential employers or collaborators.
 
+The challenges encountered during this project were both technical and creative. Firstly, diving into HTML5 to structure the
+content of the website was a learning curve. I needed to grasp the fundamentals of HTML to ensure the content was appropriately
+organized and presented. Understanding semantic elements and how to style them for an appealing layout was crucial.
+
+Additionally, leveraging React and Bootstrap for the website's frontend presented its own set of challenges. Integrating React
+components effectively while ensuring a seamless user experience required me to deepen my understanding of React's state
+management, component lifecycle, and event handling. Bootstrap further introduced me to responsive design principles, enabling
+the website to look attractive and function well across various devices and screen sizes.
+
+On the non-technical side, designing an aesthetically pleasing and coherent website was a creative challenge. Balancing colors,
+typography, and layout to achieve a visually appealing design while aligning with my personal brand was an iterative and
+thought-provoking process.
+
+Furthermore, setting up my own domain and deploying the website involved understanding domain registration, DNS settings,
+and web hosting. This was a significant step towards real-world application, enhancing my knowledge of how websites are hosted
+and accessed on the internet.
+
+Overall, my experience working on my personal portfolio website has been incredibly rewarding. This project has seamlessly
+combined technical learning with creative design, and while the website is still a work in progress with its share of
+imperfections, these shortcomings serve as valuable opportunities for growth and improvement. So, despite its current state of
+refinement, the project stands as a testament to my journey of learning and growth, showcasing my abilities and potential
+in the digital space.
