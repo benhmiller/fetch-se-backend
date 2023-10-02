@@ -30,11 +30,11 @@ app.post('/add', (req, res) => {
     }
     
     if (!Number.isInteger(points) || points === 0) { // Check points value
-        return res.status(400).json({ error: 'Invalid points. Points must be a non-zero integer.' });
+        return res.status(401).json({ error: 'Invalid points. Points must be a non-zero integer.' });
     }
 
     if (!Date.parse(timestamp)) { // Check timestamp
-        return res.status(400).json({ error: 'Invalid timestamp. Timestamp must be a valid date string.' });
+        return res.status(402).json({ error: 'Invalid timestamp. Timestamp must be a valid date string.' });
     }
 
     payer = payer.toUpperCase(); // Convert payer to uppercase for consistency
@@ -43,13 +43,13 @@ app.post('/add', (req, res) => {
     if (payer in points_per_payer) { // Add to existing item
         const newPoints = points_per_payer[payer] + points;
         if (newPoints < 0) {
-            return res.status(400).json({ error: 'Invalid points. Points per payer cannot be negative.' });
+            return res.status(401).json({ error: 'Invalid points. Points per payer cannot be negative.' });
         }
         points_per_payer[payer] = newPoints;
     }
     else { // Create new item
         if (points < 0) {
-            return res.status(400).json({ error: 'Invalid points. Points per payer cannot be negative.' });
+            return res.status(401).json({ error: 'Invalid points. Points per payer cannot be negative.' });
         }
         points_per_payer[payer] = points;
     }
@@ -97,8 +97,6 @@ app.post('/add', (req, res) => {
         spendingList.addTransaction({ payer, points, timestamp });
     }
 
-    console.log(transactions);
-    console.log(spendingList);
     res.sendStatus(200);
 });
 
@@ -119,8 +117,8 @@ app.post('/spend', (req, res) => {
         return res.status(400).json({ error: 'Invalid request body. Required key is missing.' });
     }
 
-    if (!Number.isInteger(points) || (balance - points) < 0) { // Check points value
-        return res.status(400).json({ error: `Invalid points. Points must be an integer less than or equal to the current balance: ${balance}.` });
+    if (!Number.isInteger(points) || (balance - points) < 0 || points <= 0) { // Check points value
+        return res.status(401).json({ error: `Invalid points. Points must be an integer less than or equal to the current balance: ${balance}.` });
     }
 
     // Perform spend operation
@@ -145,7 +143,8 @@ app.post('/spend', (req, res) => {
         }
     }
 
-    balance -= points; // Update total points balance for user
+    // Update user point balance
+    balance -= points; 
 
     res.status(200).json(transactionsUsed);
 });
@@ -159,7 +158,12 @@ app.get('/balance', (req, res) => {
     res.status(200).json(points_per_payer);
 });
 
+// Display Greeting
+app.get('/', (req, res) => {
+    res.send("Welcome, please refer to the README.md for further instructions.")
+});
+
 // Start the server
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port http://localhost:${PORT}`);
 });
