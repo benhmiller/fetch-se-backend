@@ -46,6 +46,13 @@ class TransactionList {
       }
     }
 
+    peekHead() {
+        if (!this.head) {
+            return null;
+        }
+        return this.head.transaction;
+    }
+
     removeHead() {
         if (!this.head) {
           return null;
