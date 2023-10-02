@@ -129,9 +129,5 @@ Run tests in [test.js](tests/test.js) from the project's main directory:
 
 Tests check that the app should:
 * `POST` a new transaction
-* NOT `POST` a new transaction with incorrect request body
+* `POST` an invalid spend
 * `GET` all points by payer
-* `POST` spend points available
-* NOT `POST` spend an unavailable amount of points
-* NOT `POST` transaction with negative points if it would make the payer's points go negative
-* `POST` transactions with negative points if payer has enough points to cover the negative amount
